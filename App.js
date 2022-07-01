@@ -32,7 +32,7 @@ function DrawerNavigator() {
         name="Categories"
         component={CategoriesScreen}
         options={{
-          title: 'All Cetegories',
+          title: 'All Categories',
           drawerIcon: ({ color, size }) => (
             <Ionicons name="list" color={color} size={size} />
           ),
