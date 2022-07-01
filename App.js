@@ -17,41 +17,37 @@ const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: '#cccccc' },
-            headerTintColor: 'white',
-            sceneContainerStyle: { backgroundColor: '#cccccc' },
-            drawerContentStyle: { backgroundColor: '#cccccc' },
-            drawerInactiveTintColor: 'white',
-            drawerActiveTintColor: 'black',
-            drawerActiveBackgroundColor: '#71B671',
-          }}
-        >
-          <Drawer.Screen
-            name="Categories"
-            component={CategoriesScreen}
-            options={{
-              title: 'All Cetegories',
-              drawerIcon: ({ color, size }) => (
-                <Ionicons name="list" color={color} size={size} />
-              ),
-            }}
-          />
-          <Drawer.Screen
-            name="Favorites"
-            component={FavoritesScreen}
-            options={{
-              drawerIcon: ({ color, size }) => (
-                <Ionicons name="star" color={color} size={size} />
-              ),
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#cccccc' },
+        headerTintColor: 'white',
+        sceneContainerStyle: { backgroundColor: '#cccccc' },
+        drawerContentStyle: { backgroundColor: '#cccccc' },
+        drawerInactiveTintColor: 'white',
+        drawerActiveTintColor: 'black',
+        drawerActiveBackgroundColor: '#71B671',
+      }}
+    >
+      <Drawer.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          title: 'All Cetegories',
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="list" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="star" color={color} size={size} />
+          ),
+        }}
+      />
+    </Drawer.Navigator>
   );
 }
 
@@ -59,31 +55,36 @@ export default function App() {
   return (
     <>
       <StatusBar style="dark" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: '#cccccc' },
-            headerTintColor: 'white',
-            contentStyle: { backgroundColor: '#cccccc' },
-          }}
-        >
-          <Stack.Screen
-            name="Drawer"
-            component={DrawerNavigator}
-            options={{
-              headerShown: false,
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: '#cccccc' },
+              headerTintColor: 'white',
+              contentStyle: { backgroundColor: '#cccccc' },
             }}
-          />
-          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
-          <Stack.Screen
-            name="MealDetails"
-            component={MealDetailsScreen}
-            options={{
-              title: 'About The Meal',
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name="Drawer"
+              component={DrawerNavigator}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="MealsOverview"
+              component={MealsOverviewScreen}
+            />
+            <Stack.Screen
+              name="MealDetails"
+              component={MealDetailsScreen}
+              options={{
+                title: 'About The Meal',
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     </>
   );
 }
